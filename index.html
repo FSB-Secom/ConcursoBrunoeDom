@@ -1,0 +1,991 @@
+<section class="premio-site">
+  <style>
+    .premio-site{
+      --bg:#e9e9e9;
+      --red:#bd342b;
+      --text:#111111;
+      --brown:#5b341f;
+      --white:#ffffff;
+      --card:#dddddd;
+      --radius:999px;
+      --title-font:'Alternate Gothic', 'Oswald';
+      --body-font:Arial, Helvetica, sans-serif;
+      --max:1280px;
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--body-font);
+      overflow:hidden;
+      position:relative;
+    }
+
+    @font-face {
+  font-family: 'Alternate Gothic';
+  src: url('Alternate Gothic W01 No 2.woff2') format('woff2'),
+       url('Alternate Gothic W01 No 2.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    .premio-site *{
+      box-sizing:border-box;
+    }
+
+    .premio-site a{
+      text-decoration:none !important;
+      color:inherit;
+    }
+
+    .premio-wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 56px;
+      position:relative;
+      z-index:2;
+    }
+
+    /* HEADER DESKTOP */
+    .premio-header{
+      display:block;
+      padding:18px 0 10px;
+      position:relative;
+      z-index:40;
+    }
+
+    .premio-header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+    }
+
+    .premio-nav{
+      display:flex;
+      align-items:center;
+      gap:34px;
+      flex:1;
+    }
+
+    .premio-nav a{
+      font-size:18px;
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      color:#111 !important;
+      transition:opacity .2s ease;
+    }
+
+    .premio-nav a:hover{
+      opacity:.7;
+    }
+
+    .premio-top-cta,
+    .premio-btn--primary,
+    .premio-legado-btn{
+      background:#000 !important;
+      color:#fff !important;
+      border:2px solid #000 !important;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-transform:uppercase;
+      line-height:1;
+      transition:all .25s ease;
+    }
+
+    .premio-top-cta:hover,
+    .premio-btn--primary:hover,
+    .premio-legado-btn:hover{
+      background:transparent !important;
+      color:#000 !important;
+      border-color:#000 !important;
+    }
+
+    .premio-top-cta{
+      min-width:255px;
+      height:64px;
+      padding:0 28px;
+      border-radius:var(--radius);
+      font-size:18px;
+    }
+
+    .premio-btn--secondary{
+      background:transparent !important;
+      color:#111 !important;
+      border:3px solid #111 !important;
+      transition:all .25s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-transform:uppercase;
+    }
+
+    .premio-btn--secondary:hover{
+      background:#111 !important;
+      color:#fff !important;
+    }
+
+    /* MOBILE BAR */
+    .premio-mobile-bar{
+      display:none;
+      background:var(--red);
+      height:120px;
+      position:relative;
+      z-index:60;
+    }
+
+    .premio-hamburger{
+      position:absolute;
+      left:22px;
+      top:34px;
+      width:56px;
+      height:42px;
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      appearance:none;
+      -webkit-appearance:none;
+    }
+
+    .premio-hamburger span{
+      display:block;
+      width:100%;
+      height:7px;
+      background:#000;
+      border-radius:2px;
+      transition:.25s ease;
+    }
+
+    .premio-hamburger.is-active span:nth-child(1){
+      transform:translateY(17px) rotate(45deg);
+    }
+
+    .premio-hamburger.is-active span:nth-child(2){
+      opacity:0;
+    }
+
+    .premio-hamburger.is-active span:nth-child(3){
+      transform:translateY(-17px) rotate(-45deg);
+    }
+
+    .premio-mobile-menu{
+      display:none;
+      position:absolute;
+      left:0;
+      right:0;
+      top:120px;
+      background:var(--bg);
+      padding:24px 22px 30px;
+      border-top:1px solid rgba(0,0,0,.08);
+      box-shadow:0 16px 28px rgba(0,0,0,.08);
+      z-index:59;
+    }
+
+    .premio-mobile-menu.is-open{
+      display:block !important;
+    }
+
+    .premio-mobile-menu nav{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      margin-bottom:22px;
+    }
+
+    .premio-mobile-menu nav a{
+      font-size:22px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:#111 !important;
+    }
+
+    .premio-mobile-menu .premio-top-cta{
+      width:100%;
+      min-width:0;
+      height:58px;
+      font-size:18px;
+    }
+
+    /* HERO */
+    .premio-hero{
+      position:relative;
+      background:var(--bg);
+      overflow:hidden;
+    }
+
+    .premio-hero-inner{
+      position:relative;
+      min-height:760px;
+      padding:8px 0 70px;
+    }
+
+    .premio-hero-grid{
+      display:grid;
+      grid-template-columns:180px minmax(0, 1fr);
+      gap:32px;
+      align-items:start;
+      position:relative;
+      z-index:2;
+    }
+
+    .premio-brand-col{
+      padding-top:52px;
+    }
+
+    .premio-brand-col img{
+      display:block;
+      width:100%;
+      max-width:180px;
+      height:auto;
+    }
+
+    .premio-content-col{
+      padding-top:56px;
+      max-width:860px;
+      position:relative;
+      z-index:3;
+    }
+
+    .premio-label{
+      display:none;
+      margin:0 0 18px;
+      font-size:18px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:700;
+      color:#111;
+    }
+
+    .premio-title{
+      margin:0 0 18px;
+      font-family:var(--title-font);
+      font-size:102px;
+      line-height:.92;
+      text-transform:uppercase;
+      font-weight:700;
+      color:#000;
+      letter-spacing:1px;
+      max-width:760px;
+    }
+
+    .premio-subtitle{
+      margin:0 0 32px;
+      max-width:640px;
+      font-family:var(--title-font);
+      font-size:30px;
+      line-height:1.22;
+      text-transform:uppercase;
+      color:var(--brown);
+    }
+
+    .premio-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:24px;
+      position:relative;
+      z-index:4;
+    }
+
+    .premio-btn{
+      min-width:330px;
+      height:74px;
+      padding:0 30px;
+      border-radius:var(--radius);
+      font-size:18px;
+    }
+
+    .premio-hero-triangle{
+      position:absolute;
+      right:-40px;
+      bottom:0;
+      width:700px;
+      height:520px;
+      background:var(--red);
+      clip-path:polygon(100% 0, 100% 100%, 0 100%);
+      z-index:1;
+    }
+
+    /* ===== VIDEO ===== */
+.premio-video{
+  padding:80px 0 40px;
+  position:relative;
+}
+
+.premio-video-wrapper{
+  position:relative;
+  max-width:900px;
+  margin:0 auto;
+}
+
+.premio-video-bg{
+  position:absolute;
+  width:75%;
+  height:85%;
+  background:var(--red);
+  top:-40px;
+  left:-40px;
+  z-index:1;
+}
+
+.premio-video-box{
+  position:relative;
+  background:#000;
+  height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+  box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+.premio-video-placeholder{
+  color:#fff;
+  font-size:64px;
+  opacity:.8;
+}
+
+/* RESPONSIVO */
+@media(max-width:860px){
+
+  .premio-video{
+    padding:60px 0 20px;
+  }
+
+  .premio-video-bg{
+    width:85%;
+    height:70%;
+    top:-30px;
+    left:-20px;
+  }
+
+  .premio-video-box{
+    height:240px;
+  }
+
+  .premio-video-placeholder{
+    font-size:40px;
+  }
+}
+
+    /* NOTÍCIAS */
+    .premio-news{
+      padding:12px 0 70px;
+      background:var(--bg);
+    }
+
+    .premio-news-title{
+      margin:0 0 34px;
+      text-align:center;
+      color:var(--red);
+      font-family:var(--title-font);
+      font-size:56px;
+      line-height:1;
+      text-transform:uppercase;
+    }
+
+    .premio-news-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .premio-news-card{
+      display:block;
+      border-radius:38px;
+      overflow:hidden;
+      background:var(--card);
+      min-height:430px;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .premio-news-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 14px 30px rgba(0,0,0,.12);
+    }
+
+    .premio-news-thumb{
+      height:305px;
+      background:var(--card);
+    }
+
+    .premio-news-bottom{
+      background:var(--red);
+      min-height:125px;
+      padding:18px 18px 22px;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .premio-news-card h3{
+      margin:0;
+      color:#fff;
+      font-size:24px;
+      line-height:1.15;
+      font-weight:700;
+    }
+
+    /* LEGADO */
+    .premio-legado{
+      padding:0;
+      background:var(--bg);
+    }
+
+    .premio-legado-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      align-items:stretch;
+      min-height:420px;
+    }
+
+    .premio-legado-photos{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      min-height:420px;
+    }
+
+    .premio-legado-photos img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter:grayscale(100%);
+    }
+
+    .premio-legado-text{
+      background:var(--red);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:56px 44px;
+    }
+
+    .premio-legado-box{
+      max-width:480px;
+    }
+
+    .premio-legado-title{
+      margin:0 0 24px;
+      font-size:34px;
+      line-height:1.1;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .premio-legado-copy{
+      margin:0 auto 34px;
+      max-width:420px;
+      font-size:28px;
+      line-height:1.24;
+      color:#fff;
+      font-weight:400;
+    }
+
+    .premio-legado-btn{
+      min-width:280px;
+      height:64px;
+      padding:0 28px;
+      font-size:18px;
+      border-radius:var(--radius);
+    }
+
+    /* TABLET */
+    @media (max-width: 1200px){
+      .premio-wrap{
+        padding:0 34px;
+      }
+
+      .premio-nav{
+        gap:22px;
+      }
+
+      .premio-nav a{
+        font-size:16px;
+        letter-spacing:2px;
+      }
+
+      .premio-top-cta{
+        min-width:210px;
+        height:60px;
+        font-size:16px;
+      }
+
+      .premio-hero-inner{
+        min-height:670px;
+      }
+
+      .premio-hero-grid{
+        grid-template-columns:110px minmax(0,1fr);
+        gap:24px;
+      }
+
+      .premio-brand-col img{
+        max-width:110px;
+      }
+
+      .premio-title{
+        font-size:82px;
+      }
+
+      .premio-subtitle{
+        font-size:24px;
+        max-width:560px;
+      }
+
+      .premio-btn{
+        min-width:280px;
+        height:66px;
+      }
+
+      .premio-hero-triangle{
+        width:520px;
+        height:430px;
+      }
+
+      .premio-news-title{
+        font-size:46px;
+      }
+
+      .premio-news-card{
+        min-height:360px;
+      }
+
+      .premio-news-thumb{
+        height:250px;
+      }
+
+      .premio-news-card h3{
+        font-size:20px;
+      }
+
+      .premio-legado-copy{
+        font-size:24px;
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 860px){
+      .premio-header{
+        display:none !important;
+      }
+
+      .premio-mobile-bar{
+        display:block !important;
+      }
+
+      .premio-wrap{
+        padding:0 22px;
+      }
+
+      .premio-hero-inner{
+        min-height:auto;
+        padding:14px 0 110px;
+      }
+
+      .premio-hero-grid{
+        grid-template-columns:110px minmax(0,1fr);
+        gap:16px;
+      }
+
+      .premio-brand-col{
+        padding-top:54px;
+      }
+
+      .premio-brand-col img{
+        max-width:110px;
+      }
+
+      .premio-content-col{
+        padding-top:18px;
+      }
+
+      .premio-label{
+        display:block;
+        font-size:15px;
+        margin-bottom:18px;
+      }
+
+      .premio-title{
+        font-size:58px;
+        line-height:.95;
+        margin-bottom:16px;
+        max-width:380px;
+      }
+
+      .premio-subtitle{
+        font-size:18px;
+        line-height:1.25;
+        max-width:360px;
+        margin-bottom:24px;
+      }
+
+      .premio-actions{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+      }
+
+      .premio-btn{
+        width:100%;
+        max-width:250px;
+        min-width:0;
+        height:56px;
+        font-size:14px;
+      }
+
+      .premio-hero-triangle{
+        right:0;
+        width:230px;
+        height:260px;
+      }
+
+      .premio-news{
+        padding:8px 0 50px;
+      }
+
+      .premio-news-title{
+        font-size:42px;
+        margin-bottom:24px;
+      }
+
+      .premio-news-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+
+      .premio-news-card{
+        min-height:300px;
+        border-radius:28px;
+      }
+
+      .premio-news-thumb{
+        height:210px;
+      }
+
+      .premio-news-bottom{
+        min-height:90px;
+      }
+
+      .premio-legado-grid{
+        grid-template-columns:1fr;
+      }
+
+      .premio-legado-photos{
+        order:1;
+        min-height:330px;
+      }
+
+      .premio-legado-text{
+        order:2;
+        padding:42px 24px 50px;
+      }
+
+      .premio-legado-title{
+        font-size:28px;
+      }
+
+      .premio-legado-copy{
+        font-size:22px;
+        max-width:420px;
+      }
+
+      .premio-legado-btn{
+        min-width:0;
+        width:100%;
+        max-width:240px;
+        height:56px;
+        font-size:14px;
+      }
+    }
+
+    @media (max-width: 560px){
+      .premio-mobile-bar{
+        height:110px;
+      }
+
+      .premio-mobile-menu{
+        top:110px;
+      }
+
+      .premio-hamburger{
+        left:18px;
+        top:30px;
+        width:48px;
+        height:36px;
+      }
+
+      .premio-hamburger span{
+        height:6px;
+      }
+
+      .premio-wrap{
+        padding:0 18px;
+      }
+
+      .premio-hero-inner{
+        padding:14px 0 102px;
+      }
+
+      .premio-hero-grid{
+        grid-template-columns:96px minmax(0,1fr);
+        gap:14px;
+      }
+
+      .premio-brand-col img{
+        max-width:96px;
+      }
+
+      .premio-label{
+        font-size:11px;
+        letter-spacing:1.6px;
+      }
+
+      .premio-title{
+        font-size:34px;
+        line-height:.98;
+        letter-spacing:.5px;
+        max-width:260px;
+      }
+
+      .premio-subtitle{
+        font-size:12px;
+        line-height:1.28;
+        max-width:230px;
+        margin-bottom:22px;
+      }
+
+      .premio-btn{
+        max-width:250px;
+        height:50px;
+        font-size:10px;
+      }
+
+      .premio-btn--secondary{
+        border-width:2px !important;
+      }
+
+      .premio-hero-triangle{
+        width:170px;
+        height:205px;
+      }
+
+      .premio-news-title{
+        font-size:32px;
+      }
+
+      .premio-news-card{
+        min-height:250px;
+        border-radius:24px;
+      }
+
+      .premio-news-thumb{
+        height:170px;
+      }
+
+      .premio-news-bottom{
+        min-height:80px;
+      }
+
+      .premio-news-card h3{
+        font-size:18px;
+      }
+
+      .premio-legado-photos{
+        min-height:260px;
+      }
+
+      .premio-legado-text{
+        padding:36px 20px 44px;
+      }
+
+      .premio-legado-title{
+        font-size:24px;
+      }
+
+      .premio-legado-copy{
+        font-size:18px;
+        max-width:290px;
+      }
+
+      .premio-legado-btn{
+        max-width:220px;
+        height:50px;
+        font-size:10px;
+      }
+    }
+  </style>
+
+  <!-- MOBILE -->
+  <div class="premio-mobile-bar">
+    <button class="premio-hamburger" aria-label="Abrir menu" aria-expanded="false" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="premio-mobile-menu" id="premioMobileMenu">
+      <nav aria-label="Menu principal mobile">
+        <a href="#categorias">Categorias</a>
+        <a href="#premiacao">Premiação</a>
+        <a href="#selecao">Seleção</a>
+        <a href="#inscricoes">Inscrições</a>
+      </nav>
+      <a class="premio-top-cta" href="#inscricoes">Inscreva-se</a>
+    </div>
+  </div>
+
+  <!-- DESKTOP -->
+  <header class="premio-header">
+    <div class="premio-wrap">
+      <div class="premio-header-row">
+        <nav class="premio-nav" aria-label="Menu principal">
+          <a href="#categorias">Categorias</a>
+          <a href="#premiacao">Premiação</a>
+          <a href="#selecao">Seleção</a>
+          <a href="#inscricoes">Inscrições</a>
+        </nav>
+
+        <a class="premio-top-cta" href="#inscricoes">Inscreva-se</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="premio-hero">
+    <div class="premio-wrap">
+      <div class="premio-hero-inner">
+        <div class="premio-hero-grid">
+          <div class="premio-brand-col">
+            <img src="marca-premio.png" alt="Marca do prêmio">
+          </div>
+
+          <div class="premio-content-col">
+
+            <h1 class="premio-title">
+              Concurso<br>
+              Dom Phillips <br>
+              e Bruno Pereira
+            </h1>
+
+            <p class="premio-subtitle">
+              DE JORNALISMO E COMUNICAÇÃO EM DEFESA <br> DO MEIO AMBIENTE, POVOS INDÍGENAS <br> E COMUNIDADES TRADICIONAIS
+            </p>
+
+            <div class="premio-actions">
+              <a class="premio-btn premio-btn--primary" href="#inscricoes">Fazer inscrição</a>
+              <a class="premio-btn premio-btn--secondary" href="#regulamento">Ler regulamento</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="premio-hero-triangle" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+ <section class="premio-video">
+  <div class="premio-wrap">
+    <div class="premio-video-wrapper">
+      
+      <div class="premio-video-bg"></div>
+
+      <div class="premio-video-box">
+        <!-- SUBSTITUIR PELO IFRAME -->
+        <div class="premio-video-placeholder">
+          ▶
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- NOTÍCIAS -->
+  <section class="premio-news" id="noticias">
+    <div class="premio-wrap">
+      <h2 class="premio-news-title">Notícias</h2>
+
+      <div class="premio-news-grid">
+        <a class="premio-news-card" href="#noticia1">
+          <div class="premio-news-thumb"></div>
+          <div class="premio-news-bottom">
+            <h3>Título da notícia 1</h3>
+          </div>
+        </a>
+
+        <a class="premio-news-card" href="#noticia2">
+          <div class="premio-news-thumb"></div>
+          <div class="premio-news-bottom">
+            <h3>Título da notícia 2</h3>
+          </div>
+        </a>
+
+        <a class="premio-news-card" href="#noticia3">
+          <div class="premio-news-thumb"></div>
+          <div class="premio-news-bottom">
+            <h3>Título da notícia 3</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGADO -->
+  <section class="premio-legado" id="legado">
+    <div class="premio-legado-grid">
+      <div class="premio-legado-photos">
+        <img src="dom.jpg" alt="Dom Phillips">
+        <img src="Bruno.jpg" alt="Bruno Pereira">
+      </div>
+
+      <div class="premio-legado-text">
+        <div class="premio-legado-box">
+          <h2 class="premio-legado-title">LEGADO BRUNO E DOM</h2>
+          <p class="premio-legado-copy">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+          </p>
+          <a class="premio-legado-btn" href="#saibamais">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var root = document.currentScript.closest('.premio-site');
+      if(!root) return;
+
+      var btn = root.querySelector('.premio-hamburger');
+      var menu = root.querySelector('#premioMobileMenu');
+
+      if(btn && menu){
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          var aberto = menu.classList.toggle('is-open');
+          btn.classList.toggle('is-active', aberto);
+          btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        });
+
+        menu.querySelectorAll('a').forEach(function(link){
+          link.addEventListener('click', function(){
+            menu.classList.remove('is-open');
+            btn.classList.remove('is-active');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        window.addEventListener('resize', function(){
+          if(window.innerWidth > 860){
+            menu.classList.remove('is-open');
+            btn.classList.remove('is-active');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
+  </script>
+</section>
